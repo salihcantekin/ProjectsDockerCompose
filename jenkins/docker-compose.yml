@@ -1,0 +1,19 @@
+services:
+  jenkins:
+    image: salihcantekin/jenkinswithdotnet:1
+    ports:
+      - 8080:8080
+      - 50000:5000
+    volumes:
+      - /mnt/nfs_shares/docker_app_data/jenkins:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - custom_net
+    deploy:
+      replicas: 1
+
+
+networks:
+  custom_net:
+    external: true
+

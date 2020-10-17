@@ -1,0 +1,20 @@
+version: '3.7'
+
+services:
+  s_rabbitmq:
+    container_name: c_rabbitmq
+    image: rabbitmq:3-management
+    ports:
+      - 9090:15672
+    volumes:
+      - /opt/app_data/rabbitmq_data:/var/lib/rabbitmq
+    networks:
+     - custom_net
+     - net_crm
+
+networks:
+   custom_net:
+     external: true
+   net_crm:
+     external: true
+
